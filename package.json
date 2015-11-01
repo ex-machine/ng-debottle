@@ -34,7 +34,7 @@
     "small": "^0.1.1"
   },
   "dependencies": {
-    "apply-fn": "^1.0.2"
+    "apply-fn": "^1.0.3"
   },
   "peerDependencies": {
     "angular": "^1.0"
