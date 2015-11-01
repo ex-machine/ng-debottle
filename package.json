@@ -1,0 +1,48 @@
+{
+  "name": "ng-debottle",
+  "author": "ex-machine",
+  "version": "1.0.1",
+  "description": "Angular debounce/throttle portmanteau, now with $timeout flavour",
+  "keywords": [
+    "angular",
+    "debounce",
+    "throttle"
+  ],
+  "license": "MIT",
+  "main": "src/ng-debottle.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ex-machine/ng-debottle.git"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "iojs": ">= 3.0.0"
+  },
+  "devDependencies": {
+    "del": "^1.2.0",
+    "extend": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-if": "^1.2.5",
+    "gulp-load-plugins": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-task-listing": "^1.0.1",
+    "gulp-uglify": "^1.2.0",
+    "mversion": "^1.10.0",
+    "run-sequence": "^1.1.1",
+    "small": "^0.1.1"
+  },
+  "dependencies": {
+    "apply-fn": "^1.0.2"
+  },
+  "peerDependencies": {
+    "angular": "^1.0"
+  },
+  "//": [
+    "npm run version -- 1.0.0"
+  ],
+  "scripts": {
+    "version": "mversion -n -m %s"
+  }
+}
