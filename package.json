@@ -1,7 +1,7 @@
 {
   "name": "ng-debottle",
   "author": "ex-machine",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular debounce/throttle portmanteau, now with $timeout flavour",
   "keywords": [
     "angular",
