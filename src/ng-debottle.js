@@ -9,6 +9,10 @@ function Debottle($timeout, delay) {
 	this.$cancel = function () {
 		return $timeout.cancel(this.$timeout);
 	}
+
+	this.$flush = function (delay) {
+		return this.$timeout.flush(delay);
+	}
 }
 
 var ngDebottle = angular.module('ngDebottle', [])
