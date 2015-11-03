@@ -3,7 +3,7 @@
   "authors": [
     "ex-machine"
   ],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Angular debounce/throttle portmanteau, now with $timeout flavour",
   "keywords": [
     "angular",
