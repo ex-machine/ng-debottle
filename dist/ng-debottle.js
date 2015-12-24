@@ -1,9 +1,6 @@
 (function(__root, __factory) { if (typeof define === "function" && define.amd) { define("ng-debottle", ["angular"], __factory);} else if (typeof exports === "object") {module.exports = __factory(require("angular"));} else {__root["ng-debottle"] = __factory(angular);}})(this, (function(__small$_mod_0) {
 var exports = {};
-'use strict';
-
-var angular = __small$_mod_0;
-var apply = ((function() {
+var __small$_1 = (function() {
 var exports = {};
 function apply(self, fn, args) {
 	var selfless = (self === undefined) || (self === null);
@@ -34,6 +31,89 @@ function apply(self, fn, args) {
 
 exports = apply;
 return exports;
+})();
+'use strict';
+
+var angular = __small$_mod_0;
+var apply = __small$_1;
+var debottle = ((function() {
+var exports = {};
+var apply = __small$_1;
+
+function Debottle(delay) {
+	this.$delay = delay;
+
+	this.$cancel = function () {
+		return clearTimeout(this.$timeout);
+	}
+}
+
+function debounce(fn, delay, cb) {
+	if (arguments.length === 2 && typeof delay === 'function') {
+		cb = delay;
+		delay = undefined;
+	}
+
+	var self = debouncedFn;
+	Debottle.call(self, delay);
+
+	function debouncedFn() {
+		var args = arguments;
+
+		if (self.$timeout !== undefined)
+			self.$cancel();
+
+		self.$timeout = setTimeout(function () {
+			if (typeof cb !== 'function')
+				return apply(null, fn, args);
+
+			try {
+				cb(null, apply(null, fn, args));
+			} catch (e)	{
+				cb(e);
+			}
+		}, self.$delay);
+	};
+
+	return self;
+}
+
+function throttle(fn, delay, cb) {
+	if (arguments.length === 2 && typeof delay === 'function') {
+		cb = delay;
+		delay = undefined;
+	}
+
+	var self = throttledFn;
+	Debottle.call(self, delay);
+
+	function throttledFn() {
+		var args = arguments;
+
+		if (self.$timeout !== undefined)
+			return;
+
+		self.$timeout = setTimeout(function () {
+			self.$timeout = undefined;
+		}, self.$delay);
+
+		if (typeof cb !== 'function')
+			return apply(null, fn, args);
+
+		try {
+			cb(null, apply(null, fn, args));
+		} catch (e)	{
+			cb(e);
+		}
+	};
+
+	return self;
+}
+
+exports.debounce = debounce;
+exports.throttle = throttle;
+
+return exports;
 })());
 
 function Debottle($timeout, delay) {
@@ -49,6 +129,8 @@ function Debottle($timeout, delay) {
 }
 
 var ngDebottle = angular.module('ngDebottle', [])
+.constant('debounce', debottle.debounce)
+.constant('throttle', debottle.throttle)
 .factory('$debounce', ['$timeout', function ($timeout) {
 	return function (fn, delay, invokeApply) {
 		var self = debouncedFn;

@@ -34,7 +34,8 @@
     "small": "^0.1.1"
   },
   "dependencies": {
-    "apply-fn": "^1.0.3"
+    "apply-fn": "^1.0.3",
+    "debottle": "^1.0.1"
   },
   "peerDependencies": {
     "angular": "^1.0"

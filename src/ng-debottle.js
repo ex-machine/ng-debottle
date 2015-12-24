@@ -2,6 +2,7 @@
 
 var angular = require('angular');
 var apply = require('apply-fn');
+var debottle = require('debottle');
 
 function Debottle($timeout, delay) {
 	this.$delay = delay;
@@ -16,6 +17,8 @@ function Debottle($timeout, delay) {
 }
 
 var ngDebottle = angular.module('ngDebottle', [])
+.constant('debounce', debottle.debounce)
+.constant('throttle', debottle.throttle)
 .factory('$debounce', ['$timeout', function ($timeout) {
 	return function (fn, delay, invokeApply) {
 		var self = debouncedFn;
